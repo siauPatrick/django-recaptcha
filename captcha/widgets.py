@@ -24,7 +24,7 @@ class ReCaptcha(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         return mark_safe(u'%s' % client.displayhtml(
             self.public_key,
-            self.js_attrs, use_ssl=self.use_ssl))
+            self.js_attrs.copy(), use_ssl=self.use_ssl))
 
     def value_from_datadict(self, data, files, name):
         return [
